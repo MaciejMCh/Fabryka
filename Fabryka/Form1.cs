@@ -75,7 +75,16 @@ namespace Fabryka
         {
             while (true)
             {
+                if (this.proces1Produkt != null && this.proces1Produkt.proces1 == 100 && this.proces2Produkt == null)
+                {
+                    this.proces2Produkt = this.proces1Produkt;
+                    this.proces1Produkt = null;
 
+                    for (int i = 0; i <= 100; i++)
+                    {
+                        this.proces2Produkt.proces2 = i;
+                    }
+                }
 
                 Thread.Sleep(10);
             }
@@ -84,7 +93,17 @@ namespace Fabryka
         {
             while (true)
             {
+                if (this.zamowienia2.Count > 0 && this.proces3Produkt == null)
+                {
+                    Produkt produkt = this.zamowienia2[this.zamowienia2.Count - 1];
+                    this.zamowienia2.Remove(produkt);
+                    this.proces3Produkt = produkt;
 
+                    for (int i = 0; i <= 100; i++)
+                    {
+                        produkt.proces3 = i;
+                    }
+                }
 
                 Thread.Sleep(10);
             }
