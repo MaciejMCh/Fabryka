@@ -1,0 +1,9 @@
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\bin\Debug\Fabryka.exe.config
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\bin\Debug\Fabryka.exe
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\bin\Debug\Fabryka.pdb
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\obj\Debug\Fabryka.csprojResolveAssemblyReference.cache
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\obj\Debug\Fabryka.Form1.resources
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\obj\Debug\Fabryka.Properties.Resources.resources
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\obj\Debug\Fabryka.csproj.GenerateResource.Cache
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\obj\Debug\Fabryka.exe
+C:\Users\na przykład Tomek\Desktop\Fabryka\Fabryka\obj\Debug\Fabryka.pdb
