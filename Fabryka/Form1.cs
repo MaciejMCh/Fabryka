@@ -17,11 +17,6 @@ namespace Fabryka
     public partial class Form1 : Form
     {
 
-        int proces1Progress = 0;
-        int proces2Progress = 0;
-        int proces3Progress = 0;
-        int proces4Progress = 0;
-
         Thread proces1Thread;
         Thread proces2Thread;
         Thread proces3Thread;
@@ -34,6 +29,9 @@ namespace Fabryka
 
         List<Produkt> zamowienia1 = new List<Produkt>();
         List<Produkt> zamowienia2 = new List<Produkt>();
+        List<Produkt> magazyn = new List<Produkt>();
+
+        Barrier barrier = new Barrier(3);
 
         public Form1()
         {
@@ -63,6 +61,7 @@ namespace Fabryka
                     for (int i = 0; i <= 100; i++)
                     {
                         produkt.proces1 = i;
+
                         Thread.Sleep(10);
                     }
 
@@ -83,7 +82,11 @@ namespace Fabryka
                     for (int i = 0; i <= 100; i++)
                     {
                         this.proces2Produkt.proces2 = i;
+
+                        Thread.Sleep(10);
                     }
+
+                    this.barrier.SignalAndWait();
                 }
 
                 Thread.Sleep(10);
@@ -102,7 +105,11 @@ namespace Fabryka
                     for (int i = 0; i <= 100; i++)
                     {
                         produkt.proces3 = i;
+
+                        Thread.Sleep(10);
                     }
+
+                    this.barrier.SignalAndWait();
                 }
 
                 Thread.Sleep(10);
@@ -112,7 +119,26 @@ namespace Fabryka
         {
             while (true)
             {
+                this.barrier.SignalAndWait();
 
+                Produkt produkt1 = this.proces2Produkt;
+                Produkt produkt2 = this.proces3Produkt;
+                this.proces4Produkt = produkt1;
+                this.proces2Produkt = null;
+                this.proces3Produkt = null;
+
+                for (int i = 0; i <= 100; i++)
+                {
+                    produkt1.proces4 = i;
+                    produkt2.proces4 = i;
+
+                    Thread.Sleep(10);
+                }
+
+                this.magazyn.Add(produkt1);
+                this.magazyn.Add(produkt2);
+
+                proces4Produkt = null;
 
                 Thread.Sleep(10);
             }
@@ -131,8 +157,10 @@ namespace Fabryka
             this.progressBar3.Value = this.proces3Produkt == null ? 0 : this.proces3Produkt.proces3;
             this.progressBar4.Value = this.proces4Produkt == null ? 0 : this.proces4Produkt.proces4;
 
-            this.label1.Text = this.zamowienia1.Count.ToString();
-            this.label2.Text = this.zamowienia2.Count.ToString();
+            this.label1.Text = "zamówienia: " + this.zamowienia1.Count.ToString();
+            this.label2.Text = "zamówienia: " + this.zamowienia2.Count.ToString();
+
+            this.label3.Text = "magazyn: " + this.magazyn.Count.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
