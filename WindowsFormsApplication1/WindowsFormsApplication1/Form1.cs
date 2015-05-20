@@ -40,6 +40,8 @@ namespace Fabryka
         List<Produkt> zamowienia2 = new List<Produkt>();
         List<Produkt> magazyn = new List<Produkt>();
 
+        Random random = new Random();
+
         Barrier barrier = new Barrier(3);
 
         public Form1()
@@ -71,7 +73,7 @@ namespace Fabryka
                     {
                         produkt.proces1 = i;
 
-                        Thread.Sleep(10);
+                        Thread.Sleep(7);
                     }
 
                 }
@@ -115,7 +117,7 @@ namespace Fabryka
                     {
                         produkt.proces3 = i;
 
-                        Thread.Sleep(10);
+                        Thread.Sleep(13);
                     }
 
                     this.barrier.SignalAndWait();
@@ -141,7 +143,7 @@ namespace Fabryka
                     produkt1.proces4 = i;
                     produkt2.proces4 = i;
 
-                    Thread.Sleep(10);
+                    Thread.Sleep(15);
                 }
 
                 this.magazyn.Add(produkt1);
