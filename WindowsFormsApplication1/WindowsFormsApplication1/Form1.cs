@@ -27,6 +27,9 @@ namespace Fabryka
         Produkt proces3Produkt;
         Produkt proces4Produkt;
 
+        Produkt ostatniProdukt1;
+        Produkt ostatniProdukt2;
+
         List<Produkt> zamowienia1 = new List<Produkt>();
         List<Produkt> zamowienia2 = new List<Produkt>();
         List<Produkt> magazyn = new List<Produkt>();
@@ -138,6 +141,9 @@ namespace Fabryka
                 this.magazyn.Add(produkt1);
                 this.magazyn.Add(produkt2);
 
+                this.ostatniProdukt1 = produkt1;
+                this.ostatniProdukt2 = produkt2;
+
                 proces4Produkt = null;
 
                 Thread.Sleep(10);
@@ -159,8 +165,15 @@ namespace Fabryka
 
             this.label1.Text = "zamówienia: " + this.zamowienia1.Count.ToString();
             this.label2.Text = "zamówienia: " + this.zamowienia2.Count.ToString();
-
             this.label3.Text = "magazyn: " + this.magazyn.Count.ToString();
+
+            if (this.ostatniProdukt1 != null) 
+            {
+                this.richTextBox1.Lines = new String[] { this.ostatniProdukt1.proces1.ToString(), this.ostatniProdukt1.proces2.ToString(), this.ostatniProdukt1.proces3.ToString(), this.ostatniProdukt1.proces4.ToString()};
+            }
+            if (this.ostatniProdukt2 != null) {
+                this.richTextBox2.Lines = new String[] { this.ostatniProdukt2.proces1.ToString(), this.ostatniProdukt2.proces2.ToString(), this.ostatniProdukt2.proces3.ToString(), this.ostatniProdukt2.proces4.ToString() };
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
