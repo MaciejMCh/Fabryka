@@ -43,7 +43,6 @@ namespace Fabryka
         Random random = new Random();
 
         Barrier barrier = new Barrier(3);
-        Barrier barrier2 = new Barrier(2);
 
         public Form1()
         {
@@ -76,7 +75,6 @@ namespace Fabryka
 
                         Thread.Sleep(7);
                     }
-                    this.barrier2.SignalAndWait();
 
                 }
 
@@ -87,7 +85,6 @@ namespace Fabryka
         {
             while (true)
             {
-                this.barrier2.SignalAndWait();
                 if (this.proces1Produkt != null && this.proces1Produkt.proces1 == 100 && this.proces2Produkt == null)
                 {
                     this.proces2Produkt = this.proces1Produkt;
