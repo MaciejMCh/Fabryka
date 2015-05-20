@@ -22,6 +22,12 @@ namespace Fabryka
         Thread proces3Thread;
         Thread proces4Thread;
 
+        Boolean proces1Running = true;
+        Boolean proces2Running = true;
+        Boolean proces3Running = true;
+        Boolean proces4Running = true;
+
+
         Produkt proces1Produkt;
         Produkt proces2Produkt;
         Produkt proces3Produkt;
@@ -179,6 +185,54 @@ namespace Fabryka
         private void button2_Click(object sender, EventArgs e)
         {
             this.zamowienia2.Add(new Produkt());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (this.proces1Running) {
+                this.proces1Thread.Suspend();
+                this.button3.BackColor = Color.Red;
+            } else {
+                this.proces1Thread.Resume();
+                this.button3.BackColor = Color.LimeGreen;
+            }
+            this.proces1Running = !this.proces1Running;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.proces2Running) {
+                this.proces2Thread.Suspend();
+                this.button4.BackColor = Color.Red;
+            } else {
+                this.proces2Thread.Resume();
+                this.button4.BackColor = Color.LimeGreen;
+            }
+            this.proces2Running = !this.proces2Running;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (this.proces3Running) {
+                this.proces3Thread.Suspend();
+                this.button6.BackColor = Color.Red;
+            } else {
+                this.proces3Thread.Resume();
+                this.button6.BackColor = Color.LimeGreen;
+            }
+            this.proces3Running = !this.proces3Running;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (this.proces4Running) {
+                this.proces4Thread.Suspend();
+                this.button5.BackColor = Color.Red;
+            } else {
+                this.proces4Thread.Resume();
+                this.button5.BackColor = Color.LimeGreen;
+            }
+            this.proces4Running = !this.proces4Running;
         }
 
 
